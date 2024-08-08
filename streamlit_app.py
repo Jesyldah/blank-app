@@ -141,9 +141,9 @@ import pandas as pd
 # Load the data
 data = {
     "DESCRIPTION": ["Excavations", "Hardcore & Dust", "DPM", "Surface treatment", "Concrete works", "Reinforcement bars", "BRC", "Formwork", "Waterproofing", "Floor Hardener & Powerfloating", "DPC", "Total"],
-    "BQ Price": [389503.69, 26500.00, 10600.00, 7950.00, 16473303.99, 12521909.63, 26000.00, 414943.42, 53048.00, 682773.35, 3090.00, 30608522.25],
-    "Materials Cost": [0, 27200.00, 3300.00, 5600.00, 10837000.00, 11156290.00, 25000.00, 267700.00, 40000.00, 387000.00, 1236.00, 22750326.00],
-    "Labor, transport and Profits Cost": [389503.69, -700.00, 7300.00, 2350.00, 5636303.99, 1365019.63, 1500.00, 146243.42, 13048.00, 295773.35, 1854.00, 7858196.25],
+    "BQ Price": ['389,503.69', '26,500.00', '10,600.00', '7,950.00', '16,473,303.99', '12,521,909.63', '26,000.00', '414,943.42', '53,048.00', '682,773.35', '3,090.00', '30,608,522.25'],
+    "Materials Cost": [0, '27,200.00', '3,300.00', '5,600.00', '10,837,000.00', '11,156,290.00', '25,000.00', '267,700.00', '40,000.00', '387,000.00', '1,236.00', '22,750,326.00'],
+    "Labor, transport and Profits Cost": ['389,503.69', '-700.00', '7,300.00', '2,350.00', '5,636,303.99', '1,365,019.63', '1,500.00', '146,243.42', '13,048.00', '295,773.35', '1,854.00', '7,858,196.25'],
     "Remarks": ["", "", "", "", "", "", "", "", "", "", "", ""]
 }
 
@@ -155,14 +155,14 @@ df.index = list("ABCDEFGHIJKL")
 
 # Create HTML table
 html_table = """
-<h5>Sample BQ 1</h5>
-<hr>
-<p><b>Project Name: </b>Proposed  Residential Development (1A) , Riruta, Off Naivasha Road </p>
-<p><b>Cost Analysis Level: </b>Rate Anaylsis <i>(Cost of Materials, Labor, transport and Profits) </i></p>
-<p><b>BQ Element/Section:  </b>Section 03 - Structure </p>
-<table border="1" class="dataframe" style="width:100%; border: 1px solid black; border-collapse: collapse;">
+<h6>Sample BQ 1</h6>
+<p style="font-size:12px"><b>Project Name: </b>Proposed  Residential Development (1A) , Riruta, Off Naivasha Road </p>
+<p style="font-size:12px"><b>Cost Analysis Level: </b>Rate Anaylsis <i>(Cost of Materials, Labor, transport and Profits) </i></p>
+<p style="font-size:12px"><b>BQ Element/Section:  </b>Section 03 - Structure </p>
+<div style="max-width: 100%; overflow-x: auto;">
+<table border="1" class="dataframe" style="width:100%; border: 1px solid black; border-collapse: collapse; font-size: 10px;">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: left;">
       <th></th>
       <th>DESCRIPTION</th>
       <th>BQ Price</th>
@@ -201,9 +201,9 @@ html_table += """
 # Load the data
 new_data = {
     "DESCRIPTION": ["Concrete works", "Reinforcement bars", "Formwork", "Total"],
-    "BQ Price": [28109707.73, 39546297.23, 13622229.38, 81277234.33],
-    "Materials Cost": [18466700.00, 35064852.56, 8858200.00, 62389752.56],
-    "Labor, transport and Profits Cost": [9642007.73, 4481444.67, 4764029.38, 18887451.77],
+    "BQ Price": ['28,109,707.73', '39,546,297.23', '13,622,229.38', '81,277,234.33'],
+    "Materials Cost": ['18,466,700.00', '35,064,852.56', '8,858,200.00', '62,389,752.56'],
+    "Labor, transport and Profits Cost": ['9,642,007.73', '4,481,444.67', '4,764,029.38', '18,887,451.77'],
     "Remarks": ["", "", "", ""]
 }
 
@@ -238,9 +238,9 @@ html_table += """
 # Load the data
 new_data2 = {
     "DESCRIPTION": ["Sikalastic 560 waterproofing", "Floor Finishes", "PCC Interlocking Tiles", "Polycarbonate", "Total"],
-    "BQ Price": [2086295.7, 1700452.625, 762300, 90000, 4639048.325],
-    "Materials Cost": [3219000, 976912, 539100, 57000, 4792012],
-    "Labor, transport and Profits Cost": [-1132704.3, 723540.625, 223200, 33000, -152963.675],
+    "BQ Price": ['2,086,295.70', '1,700,452.63', '762,300.00', '90,000.00', '4,639,048.33'],
+    "Materials Cost": ['3,219,000.00', '976,912.00', '539,100.00', '57,000.00', '4,792,012.00'],
+    "Labor, transport and Profits Cost": ['-1,132,704.30', '723,540.63', '223,200.00', '33,000.00', '-152,963.68'],
     "Remarks": ["", "", "", "",""]
 }
 
@@ -274,9 +274,9 @@ html_table += """
 # Load the data
 new_data4 = {
     "DESCRIPTION": ["Copings", "Masonry walls-6'' Thick", "Ditto-4'' Thick", "Lintol", "Total"],
-    "BQ Price": [204790, 18833521.05, 576034.8, 272255, 19886600.85],
-    "Materials Cost": [112500, 12436040, 336100, 359150.8, 13243790.8],
-    "Labor, transport and Profits Cost": [92290, 6397481.05, 239934.8, -86895.8, 6642810.05],
+    "BQ Price": ['204,790.00', '18,833,521.05', '576,034.80', '272,255.00', '19,886,600.85'],
+    "Materials Cost": ['112,500.00', '12,436,040.00', '336,100.00', '359,150.80', '13,243,790.80'],
+    "Labor, transport and Profits Cost": ['92,290.00', '6,397,481.05', '239,934.80', '-86,895.80', '6,642,810.05'],
     "Remarks": ["", "", "", "",""]
 }
 
@@ -310,9 +310,9 @@ html_table += """
 # Load the data
 new_data5 = {
     "DESCRIPTION": ["Substructures", "Superstructure", "Roofing", "Walling", "Total"],
-    "BQ Price": [30608522.2531377, 81277234.328207, 4639048.325, 19886600.85, 136411405.756345],
-    "Materials Cost": [22750326, 62389752.56, 4792012, 13243790.8, 103175881.36],
-    "Labor, transport and Profits Cost": [7858196.25313774, 18887481.768207, -152963.675, 6642810.05, 33235524.3963448],
+    "BQ Price": ['30,608,522.25', '81,277,234.33', '4,639,048.33', '19,886,600.85', '136,411,405.76'],
+    "Materials Cost": ['22,750,326.00', '62,389,752.56', '4,792,012.00', '13,243,790.80', '103,175,881.36'],
+    "Labor, transport and Profits Cost": ['7,858,196.25', '18,887,481.77', '-152,963.68', '6,642,810.05', '33,235,524.40'],
     "Remarks": ["", "", "", "",""]
 }
 
@@ -339,15 +339,16 @@ html_table += "</tr>"
 html_table += """
   </tbody>
 </table>
+<div>
 """
 
 
 # Load the data
 data2 = {
     "DESCRIPTION": ["Excavations", "Hardcore", "Quarry Dust", "Surface treatment", "Concrete works", "Reinforcement bars", "BRC", "Formwork", "Foundation Walling", "Total"],
-    "BQ Price": [2067750, 35000, 20000, 0, 7233850, 3922320, 48000, 439100, 304000, 14070020],
-    "Materials Cost": [0, 31500, 6400, 0, 4262400, 3236520, 25000, 283345, 219800, 8064965],
-    "Labor, transport and Profits Cost": [2067750, 3500, 13600, 0, 2971450, 685800, 23000, 155755, 84200, 6005055],
+    "BQ Price": ['2,067,750.00', '35,000.00', '20,000.00', '0.00', '7,233,850.00', '3,922,320.00', '48,000.00', '439,100.00', '304,000.00', '14,070,020.00'],
+    "Materials Cost": ['0.00', '31,500.00', '6,400.00', '0.00', '4,262,400.00', '3,236,520.00', '25,000.00', '283,345.00', '219,800.00', '8,064,965.00'],
+    "Labor, transport and Profits Cost": ['2,067,750.00', '3,500.00', '13,600.00', '0.00', '2,971,450.00', '685,800.00', '23,000.00', '155,755.00', '84,200.00', '6,005,055.00'],
     "Remarks": ["", "", "", "", "", "", "", "", "", ""]
 }
 
@@ -359,12 +360,12 @@ df6.index = list("ABCDEFGHIJ")
 
 # Create HTML table
 html_table2 = """
-<h5>Sample BQ 2</h5>
-<hr>
-<p><b>Project Name: </b>Proposed  Elmer Haco Apartments for Elmer One Development Limited </p>
-<p><b>Cost Analysis Level: </b>Rate Anaylsis <i>(Cost of Materials, Labor, transport and Profits) </i></p>
-<p><b>BQ Element/Section:  </b>Section 03 - Structure </p>
-<table border="1" class="dataframe" style="width:100%; border: 1px solid black; border-collapse: collapse;">
+<h6>Sample BQ 2</h6>
+<p style="font-size:12px"><b>Project Name: </b>Proposed  Elmer Haco Apartments for Elmer One Development Limited </p>
+<p style="font-size:12px"><b>Cost Analysis Level: </b>Rate Anaylsis <i>(Cost of Materials, Labor, transport and Profits) </i></p>
+<p style="font-size:12px"><b>BQ Element/Section:  </b>Section 03 - Structure </p>
+<div style="max-width: 100%; overflow-x: auto;">
+<table border="1" class="dataframe" style="width:100%; border: 1px solid black; border-collapse: collapse; font-size: 10px;">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -405,9 +406,9 @@ html_table2 += """
 # Load the data
 data7 = {
     "DESCRIPTION": ["Concrete works", "Reinforcement bars", "Formwork", "Waterproofing", "Total"],
-    "BQ Price": [50915823, 71415600, 16253850, 160600, 138745873],
-    "Materials Cost": [30071800, 57790360, 10691490, 96000, 98649650],
-    "Labor, transport and Profits Cost": [20844023, 13625240, 5562360, 64600, 40096223],
+    "BQ Price": ['50,915,823.00', '71,415,600.00', '16,253,850.00', '160,600.00', '138,745,873.00'],
+    "Materials Cost": ['30,071,800.00', '57,790,360.00', '10,691,490.00', '96,000.00', '98,649,650.00'],
+    "Labor, transport and Profits Cost": ['20,844,023.00', '13,625,240.00', '5,562,360.00', '64,600.00', '40,096,223.00'],
     "Remarks": ["", "", "", "",""]
 }
 
@@ -442,9 +443,9 @@ html_table2 += """
 data8 = {
     "DESCRIPTION": ["Concrete works","Reinforcement bars", "Formwork", "Copings ", "Masonry walling",  "APP waterproofing",  "Saflock roofing sheets", "Roof insulation",  "Roof steel works", "Polycarbonate",  "Finishings",
 "Total"],
-    "BQ Price": [678222,  142920, 191550, 380250, 859800, 2552200,  2043400,  526800, 3160450,  684000, 4335470,  11219592,],
-    "Materials Cost": [395600,  121440, 124510, 325500, 593488, 1229000,  1311200,  360000, 2330532,  210000, 2838778,  7001270,],
-    "Labor, transport and Profits Cost": [282622, 21480,  67040,  54750,  266312, 1323200,  732200, 166800, 829918, 474000, 1496692,  5715014,],
+    "BQ Price": ['678,222.00',  '142,920.00', '191,550.00', '380,250.00', '859,800.00', '25,522,00.00',  '2,043,400.00',  '526,800.00', '3,160,450.00',  '684,000.00', '4,335,470.00',  '11,219,592.00',],
+    "Materials Cost": ['395,600.00',  '121,440.00', '124,510.00', '325,500.00', '593,488.00', '1,229,000.00',  '1,311,200.00',  '360,000.00', '2,330,532.00',  '210,000.00', '2,838,778.00',  '7,001,270.00',],
+    "Labor, transport and Profits Cost": ['282,622.00', '21,480.00',  '67,040.00',  '54,750.00',  '266,312.00', '1,323,200.00',  '732,200.00', '166,800.00', '829,918.00', '474,000.00', '1,496,692.00',  '5,715,014.00',],
     "Remarks": ["", "", "", "","", "", "", "","","","",""]
 }
 
@@ -478,9 +479,9 @@ html_table2 += """
 # Load the data
 data9 = {
     "DESCRIPTION": ["Steel staircase complete","Total"],
-    "BQ Price": [8942868, 8942868],
-    "Materials Cost": [6159275,  6159275],
-    "Labor, transport and Profits Cost": [2783593, 2783593],
+    "BQ Price": ['8,942,868.00', '8,942,868.00'],
+    "Materials Cost": ['6,159,275.00',  '6,159,275.00'],
+    "Labor, transport and Profits Cost": ['2,783,593.00', '2,783,593.00'],
     "Remarks": ["", ""]
 }
 
@@ -514,9 +515,9 @@ html_table2 += """
 # Load the data
 data10 = {
     "DESCRIPTION": ["Copings",  "Clay brick grille",  "Masonry walls",  "Balustrading", "Finishes", "Fencing","Total"],
-    "BQ Price": [1137750, 452200, 17423500, 1647000,  12881970, 799200, 33542420,],
-    "Materials Cost": [973350,  266800, 11697020, 1235250,  5341760,  409800, 19514180,],
-    "Labor, transport and Profits Cost": [164400, 185400, 5726480,  411750, 7540210,  389400, 14417640,],
+    "BQ Price": ['1,137,750.00', '452,200.00', '17,423,500.00', '1,647,000.00',  '12,881,970.00', '799,200.00', '33,542,420.00',],
+    "Materials Cost": ['973,350.00',  '266,800.00', '11,697,020.00', '1,235,250.00',  '5,341,760.00',  '409,800.00', '19,514,180.00',],
+    "Labor, transport and Profits Cost": ['164,400.00', '185,400.00', '5,726,480.00',  '411,750.00', '7,540,210.00',  '389,400.00', '14,417,640.00',],
     "Remarks": ["", "", "", "", "", "", ""]
 }
 
@@ -550,9 +551,9 @@ html_table2 += """
 # Load the data
 data11 = {
     "DESCRIPTION": ["Windows & Doors","Total"],
-    "BQ Price": [63586400, 63586400],
-    "Materials Cost": [52893471,  52893471],
-    "Labor, transport and Profits Cost": [10692929, 10692929],
+    "BQ Price": ['63,586,400.00', '63,586,400.00'],
+    "Materials Cost": ['52,893,471.00',  '52,893,471.00'],
+    "Labor, transport and Profits Cost": ['10,692,929.00', '10,692,929.00'],
     "Remarks": ["", ""]
 }
 
@@ -586,9 +587,9 @@ html_table2 += """
 # Load the data
 data12 = {
     "DESCRIPTION": ["Stone works","Total"],
-    "BQ Price": [15975500, 15975500],
-    "Materials Cost": [10621126,  10621126],
-    "Labor, transport and Profits Cost": [5354374, 5354374],
+    "BQ Price": ['15,975,500.00', '15,975,500.00'],
+    "Materials Cost": ['10,621,126.00',  '10,621,126.00'],
+    "Labor, transport and Profits Cost": ['5,354,374.00', '5,354,374.00'],
     "Remarks": ["", ""]
 }
 
@@ -622,9 +623,9 @@ html_table2 += """
 # Load the data
 data13 = {
     "DESCRIPTION": ["Doors","Total"],
-    "BQ Price": [27792470, 27792470],
-    "Materials Cost": [14784448,  14784448],
-    "Labor, transport and Profits Cost": [13008022, 13008022],
+    "BQ Price": ['27,792,470.00', '27,792,470.00'],
+    "Materials Cost": ['14,784,448.00',  '14,784,448.00'],
+    "Labor, transport and Profits Cost": ['13,008,022.00', '13,008,022.00'],
     "Remarks": ["", ""]
 }
 
@@ -658,9 +659,9 @@ html_table2 += """
 # Load the data
 data14 = {
     "DESCRIPTION": ["Internal wall finishes", "Floor finishes", "Ceiling finishes", "Fittings","Total"],
-    "BQ Price": [30715380,  30320670, 14509800, 46350414, 61036050,],
-    "Materials Cost": [30715380,  30320670, 14509800, 46350414, 61036050,],
-    "Labor, transport and Profits Cost": [18745968, 9724940,  10531285, 11587603.5, 50589796.5,],
+    "BQ Price": ['30,715,380.00',  '30,320,670.00', '14,509,800.00', '46,350,414.00', '61,036,050.00',],
+    "Materials Cost": ['30,715,380.00',  '30,320,670.00', '14,509,800.00', '46,350,414.00', '61,036,050.00',],
+    "Labor, transport and Profits Cost": ['18,745,968.00', '9,724,940.00',  '10,531,285.00', '11,587,603.50', '50,589,796.50',],
     "Remarks": ["", "", "", "", ""]
 }
 
@@ -694,9 +695,9 @@ html_table2 += """
 # Load the data
 data15 = {
     "DESCRIPTION": ["Substructures",  "Superstructure", "Roofing",  "Staircases", "External Walls", "Windows and External Doors", "Internal Walling", "Internal Doors", "Internal Finishes","Total"],
-    "BQ Price": ['14,070,020',  138745873,  15555062, 8942868,  34341620, 63586400, 15975500, 27792470, 121896264,  440906077,],
-    "Materials Cost": [8064965, 98649650, 9840048,  6159275,  19923980, 52893471, 10621126, 14784448, 71306467.5, 292243430.5,],
-    "Labor, transport and Profits Cost": [6005055,  40096223, 5715014,  2783593,  14417640, 10692929, 5354374,  13008022, 50589796.5, 148662646.5,],
+    "BQ Price": ['14,070,020',  '138,745,873.00',  '15,555,062.00', '8,942,868.00',  '34,341,620.00', '63,586,400.00', '15,975,500.00', '27,792,470.00', '121,896,264.00',  '440,906,077.00',],
+    "Materials Cost": ['8,064,965.00', '98,649,650.00', '9,840,048.00',  '6,159,275.00',  '19,923,980.00', '52,893,471.00', '10,621,126.00', '14,784,448.00', '71,306,467.50', '292,243,430.50',],
+    "Labor, transport and Profits Cost": ['6,005,055.00',  '40,096,223.00', '5,715,014.00',  '2,783,593.00',  '14,417,640.00', '10,692,929.00', '5,354,374.00',  '13,008,022.00', '50,589,796.50', '148,662,646.50',],
     "Remarks": ["", "", "", "", "", "", "", "", "", ""]
 }
 
@@ -723,6 +724,7 @@ html_table2 += "</tr>"
 html_table2 += """
   </tbody>
   </table>
+</div>
 """
 
 # Create a Streamlit app
@@ -735,7 +737,7 @@ html_table2 += """
 # Use the full page instead of a narrow central column
 # st.set_page_config(layout="wide")
 
-with st.expander("Explore Bill of Quantities (BQs)", expanded=True):
+with st.expander("Explore Bill of Quantities (BQs)"):
   # Create two columns for the tables
   col1, col2 = st.columns([1,1])
 
