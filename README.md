@@ -1,8 +1,8 @@
 # 🎈 Blank app template
 
-A simple Streamlit app template for you to modify!
+Housing Development Cost Comparison
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://kobov0.streamlit.app//)
 
 ### How to run it on your own machine
 
