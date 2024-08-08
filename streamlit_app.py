@@ -118,7 +118,7 @@ ax[1].legend(loc='upper left', bbox_to_anchor=(1.05, 1), frameon=False, fontsize
 plt.tight_layout()
 
 # Displaying in Streamlit
-st.title("Housing Development Cost Comparison")
+st.subheader("Housing Development Cost Comparison")
 
 with st.expander("HCCB 22 gragh comparison: CAHF vs Low-rise and High-rise projects", expanded=True):
     # Create a container for the columns
