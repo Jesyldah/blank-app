@@ -9,6 +9,68 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout="wide")
+
+# Custom CSS to make the expander fill the page width and prevent overlapping
+st.markdown(
+    """
+    <style>
+    .streamlit-expander {
+        width: 100%;
+    }
+    .streamlit-expander > .streamlit-expanderHeader {
+        width: 100%;
+    }
+    .streamlit-expander > .streamlit-expanderContent {
+        width: 100%;
+    }
+    .stApp {
+        overflow-x: hidden;
+    }
+    .column1 {
+        flex: 1 !important;
+        max-width: 100%;
+    }
+    .column2 {
+        flex: 2 !important;
+        max-width: 100%;
+    }
+    @media (max-width: 1600px) {
+        .column1 {
+            flex: 1 !important;
+            max-width: 100%;
+        }
+        .column2 {
+            flex: 2 !important;
+            max-width: 100%;
+        }
+    }
+    @media (max-width: 1200px) {
+        .column1, .column2 {
+            flex: 100% !important;
+            max-width: 100%;
+        }
+    }
+    .fixed-table {
+        width: 100%;
+        height: 320px;  /* Set a fixed height */
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 10px;  /* Reduced font size */
+    }
+    .fixed-table table {
+        table-layout: fixed;
+        width: 100%;
+    }
+    .fixed-table th, .fixed-table td {
+        text-align: left;  /* Align text to the right */
+        padding: 5px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Data preparation
 data_lbl = {
     'Cost element': ['Land', 'Infrastructure', 'Compliances and approvals', 'Construction',
@@ -55,20 +117,20 @@ ax[1].legend(loc='upper left', bbox_to_anchor=(1.05, 1), frameon=False, fontsize
 # Adjust layout
 plt.tight_layout()
 
-st.set_page_config(layout="wide")
-
 # Displaying in Streamlit
 st.title("Housing Development Cost Comparison")
 
-with st.expander("HCCB 22 gragh comparison: CAHF vs Low-rise and High-rise projects"):
-    # Create two columns
-    col1, col2 = st.columns([1,2])
+with st.expander("HCCB 22 gragh comparison: CAHF vs Low-rise and High-rise projects", expanded=True):
+    # Create a container for the columns
+    with st.container():
+        # Create two columns with custom widths
+        col1, col2 = st.columns([1, 2], gap="medium")
 
-    with col1:
-        st.write(df_lbl.to_html(index=False), unsafe_allow_html=True)
+        with col1:
+            st.markdown(f'<div class="fixed-table">{df_lbl.to_html(index=False)}</div>', unsafe_allow_html=True)
 
-    with col2:
-        st.pyplot(fig)
+        with col2:
+            st.pyplot(fig)
 
 
 
@@ -673,7 +735,7 @@ html_table2 += """
 # Use the full page instead of a narrow central column
 # st.set_page_config(layout="wide")
 
-with st.expander("Explore Bill of Quantities (BQs)"):
+with st.expander("Explore Bill of Quantities (BQs)", expanded=True):
   # Create two columns for the tables
   col1, col2 = st.columns([1,1])
 
