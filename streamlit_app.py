@@ -109,7 +109,7 @@ st.markdown(
         padding: 5px;
     }
         /* Footer styling */
-    .footer {
+    .myfooter {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -833,7 +833,7 @@ with st.expander("Explore Bill of Quantities (BQs)"):
 
 # Footer
 st.markdown("""
-<div class="footer">
+<div class="myfooter">
     <p>
         Contact us: info@example.com | All rights reserved © 2024
         <br>
