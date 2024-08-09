@@ -10,19 +10,28 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
 
-st.set_page_config(layout="wide")
+im = Image.open("./openaccess.png")
+
+st.set_page_config(layout="wide", page_title="Kobo Dashboard", page_icon = im)
 
 # Custom CSS to make the expander fill the page width and prevent overlapping
 st.markdown(
     """
     <style>
-        /* Move the content to the top */
+    /* Make the main container full width */
+    .main {
+        max-width: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+    }
+
     .css-18e3th9 {
-        padding-top: 0rem !important;  /* Completely remove padding at the top */
+        padding-top: 0rem !important;
     }
     
-    .main {
-        padding-top: 0 !important;  /* Remove padding from the main section */
+    .css-1d391kg {
+        padding-top: 0rem;
     }
 
     .header-container {
@@ -33,6 +42,8 @@ st.markdown(
         padding: 10px 20px;
         height: 60px; /* Adjust height to fit the content */
         margin: 0;  /* Remove any margin */
+        max-width: 100%;
+        box-sizing: border-box;
     }
     .header-image {
         max-height: 60px; /* Smaller header image */
@@ -97,10 +108,31 @@ st.markdown(
         text-align: left;  /* Align text to the right */
         padding: 5px;
     }
+        /* Footer styling */
+    .footer {
+        position: fixed;
+        left: 60;
+        bottom: 0;
+        width: 87%;
+        background-color: #018749;
+        color: white;
+        text-align: center;
+        padding: 0px 0;
+        font-size: 12px;
+        }
     </style>
     """,
     unsafe_allow_html=True
 )
+
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+
+st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # Data preparation
 data_lbl = {
@@ -164,7 +196,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-st.subheader("Housing Development Cost Comparison")
+# st.subheader("Housing Development Cost Comparison")
 
 # Add Lorem Ipsum text
 st.markdown("""
@@ -799,3 +831,16 @@ with st.expander("Explore Bill of Quantities (BQs)"):
   # Add the second table to the second column
   with col2:
       st.markdown(html_table2, unsafe_allow_html=True)
+
+# Footer
+st.markdown("""
+<div class="footer">
+    <p>
+        Contact us: info@example.com | All rights reserved © 2024
+        <br>
+        <a href="https://www.facebook.com" target="_blank" style="color:white">Facebook</a>
+        | <a href="https://www.twitter.com" target="_blank" style="color:white">Twitter</a>
+        | <a href="https://www.linkedin.com" target="_blank" style="color:white">LinkedIn</a>
+    </p>
+</div>
+""", unsafe_allow_html=True)
