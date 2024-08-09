@@ -42,7 +42,7 @@ st.markdown(
         padding: 10px 20px;
         height: 60px; /* Adjust height to fit the content */
         margin: 0;  /* Remove any margin */
-        max-width: 100%;
+        width: 100%;
         box-sizing: border-box;
     }
     .header-image {
@@ -111,9 +111,9 @@ st.markdown(
         /* Footer styling */
     .footer {
         position: fixed;
-        left: 60;
+        left: 0;
         bottom: 0;
-        width: 87%;
+        width: 100%;
         background-color: #018749;
         color: white;
         text-align: center;
@@ -127,8 +127,7 @@ st.markdown(
 
 hide_default_format = """
        <style>
-       #MainMenu {visibility: hidden; }
-       footer {visibility: hidden;}
+       #MainMenu, header, footer {visibility: hidden;}
        </style>
        """
 
@@ -196,7 +195,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# st.subheader("Housing Development Cost Comparison")
+st.subheader("Housing Development Cost Comparison")
 
 # Add Lorem Ipsum text
 st.markdown("""
