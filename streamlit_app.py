@@ -118,7 +118,8 @@ st.markdown(
         color: white;
         text-align: center;
         padding: 0px 0;
-        font-size: 12px;
+        font-size: 8px;
+        z-index: 1000;
         }
     </style>
     """,
@@ -830,6 +831,9 @@ with st.expander("Explore Bill of Quantities (BQs)"):
   # Add the second table to the second column
   with col2:
       st.markdown(html_table2, unsafe_allow_html=True)
+
+with st.expander("Cost Estimation"):
+    st.markdown("Input values")
 
 # Footer
 st.markdown("""
