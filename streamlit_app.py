@@ -8,6 +8,7 @@ import streamlit as st
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from PIL import Image
 
 st.set_page_config(layout="wide")
 
@@ -15,6 +16,29 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
+        /* Move the content to the top */
+    .css-18e3th9 {
+        padding-top: 0rem !important;  /* Completely remove padding at the top */
+    }
+    
+    .main {
+        padding-top: 0 !important;  /* Remove padding from the main section */
+    }
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Align image to the left */
+        background: linear-gradient(to right, #018749, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2); /* Green and grey background shades */
+        padding: 10px 20px;
+        height: 60px; /* Adjust height to fit the content */
+        margin: 0;  /* Remove any margin */
+    }
+    .header-image {
+        max-height: 60px; /* Smaller header image */
+        margin-left: 50px; /* Space between image and title */
+        width: 60px;
+    }
     .streamlit-expander {
         width: 100%;
     }
@@ -53,7 +77,7 @@ st.markdown(
     }
     .fixed-table {
         width: 100%;
-        height: 320px;  /* Set a fixed height */
+        height: 350px;  /* Set a fixed height */
         overflow-y: auto;
         overflow-x: hidden;
         font-size: 10px;  /* Reduced font size */
@@ -61,6 +85,13 @@ st.markdown(
     .fixed-table table {
         table-layout: fixed;
         width: 100%;
+    }
+
+    .fixed-table th {
+        background-color: #018749;  /* Green background for headers */
+        color: white;
+        text-align: right;  /* Align text to the right */
+        padding: 5px;
     }
     .fixed-table th, .fixed-table td {
         text-align: left;  /* Align text to the right */
@@ -96,31 +127,51 @@ data_num = {
 df = pd.DataFrame(data_num)
 
 # Creating the charts
-fig, ax = plt.subplots(1, 2, figsize=(20, 10))
+fig, ax = plt.subplots(1, 2, figsize=(24, 12))
 
 # Bar chart for cost in Kenyan Shillings
 df.set_index('Cost element').T.plot(kind='bar', stacked=True, ax=ax[0], legend=False)
-ax[0].set_title('Housing Development Cost Comparisons: Kenyan Shillings', fontsize=16,)
+ax[0].set_title('Housing Development Cost Comparisons: Kenyan Shillings', fontsize=20,)
 ax[0].set_ylabel('Kenyan shillings (millions)', fontsize=16, fontweight='bold')
 ax[0].set_xlabel('')
-ax[0].set_xticklabels(df.columns[1:], rotation=0, fontsize=12,)
+ax[0].set_xticklabels(df.columns[1:], rotation=0, fontsize=16,)
 
 # Bar chart for percentage cost
 df_percentage = df.set_index('Cost element').div(df.set_index('Cost element').sum(axis=0), axis=1) * 100
 df_percentage.T.plot(kind='bar', stacked=True, ax=ax[1])
-ax[1].set_title('Housing Development Cost Comparisons: Percentage', fontsize=16)
+ax[1].set_title('Housing Development Cost Comparisons: Percentage', fontsize=20)
 ax[1].set_ylabel('Percentage(%)', fontsize=16, fontweight='bold')
 ax[1].set_xlabel('')
-ax[1].set_xticklabels(df.columns[1:], rotation=0, fontsize=12)
+ax[1].set_xticklabels(df.columns[1:], rotation=0, fontsize=16)
 ax[1].legend(loc='upper left', bbox_to_anchor=(1.05, 1), frameon=False, fontsize=18)
 
 # Adjust layout
 plt.tight_layout()
 
 # Displaying in Streamlit
+# st.image('./openaccess.png')
+
+# Load the header image
+header_image = Image.open("./openaccess.png")
+
+# Add the header image
+# Display the header with the image and background colors
+# header_image = "./openaccess.png"  # Use the correct path to your image
+# Display the header with the image and background colors
+st.markdown(f"""
+<div class="header-container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4XHiiYPE05yXnEX6enp_ETSuVF0-N2u-MVSeypb8sIlAAX5O1", class="header-image"/>
+</div>
+""", unsafe_allow_html=True)
+
 st.subheader("Housing Development Cost Comparison")
 
-with st.expander("HCCB 22 gragh comparison: CAHF vs Low-rise and High-rise projects", expanded=True):
+# Add Lorem Ipsum text
+st.markdown("""
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Sed congue, metus non scelerisque dignissim, purus nisi pulvinar metus, eget ultricies nisl erat ut mi. Fusce elementum, nulla vel feugiat lacinia, elit purus fermentum lacus, et imperdiet urna metus et ligula. Ut tincidunt, erat eu tincidunt gravida, felis libero tempus lorem, ac sodales mi justo a turpis. Curabitur suscipit, sem quis elementum faucibus, erat orci posuere metus, et ultricies magna risus a purus. Nullam vestibulum ligula et sapien consequat, quis interdum quam cursus.
+""")
+
+with st.expander("HCCB 2022 gragh comparison: CAHF vs Low-rise and High-rise projects", expanded=True):
     # Create a container for the columns
     with st.container():
         # Create two columns with custom widths
@@ -155,7 +206,7 @@ df.index = list("ABCDEFGHIJKL")
 
 # Create HTML table
 html_table = """
-<h6>Sample BQ 1</h6>
+<h6 style="color:green">Sample BQ 1</h6>
 <p style="font-size:12px"><b>Project Name: </b>Proposed  Residential Development (1A) , Riruta, Off Naivasha Road </p>
 <p style="font-size:12px"><b>Cost Analysis Level: </b>Rate Anaylsis <i>(Cost of Materials, Labor, transport and Profits) </i></p>
 <p style="font-size:12px"><b>BQ Element/Section:  </b>Section 03 - Structure </p>
@@ -360,7 +411,7 @@ df6.index = list("ABCDEFGHIJ")
 
 # Create HTML table
 html_table2 = """
-<h6>Sample BQ 2</h6>
+<h6 style="color:green">Sample BQ 2</h6>
 <p style="font-size:12px"><b>Project Name: </b>Proposed  Elmer Haco Apartments for Elmer One Development Limited </p>
 <p style="font-size:12px"><b>Cost Analysis Level: </b>Rate Anaylsis <i>(Cost of Materials, Labor, transport and Profits) </i></p>
 <p style="font-size:12px"><b>BQ Element/Section:  </b>Section 03 - Structure </p>
