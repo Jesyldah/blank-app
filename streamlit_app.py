@@ -9,6 +9,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
+import plotly.express as px
 
 im = Image.open("./openaccess.png")
 
@@ -88,7 +89,7 @@ st.markdown(
     }
     .fixed-table {
         width: 100%;
-        height: 350px;  /* Set a fixed height */
+        height: 400px;  /* Set a fixed height */
         overflow-y: auto;
         overflow-x: hidden;
         font-size: 10px;  /* Reduced font size */
@@ -158,27 +159,58 @@ data_num = {
 
 df = pd.DataFrame(data_num)
 
-# Creating the charts
-fig, ax = plt.subplots(1, 2, figsize=(24, 12))
+# Interactive stacked bar chart with Housing Type on X-axis and Cost Elements on Y-axis
+df_melted = df.melt(id_vars='Cost element', var_name='Housing Type', value_name='Cost')
+fig1 = px.bar(df_melted, 
+              x='Housing Type', 
+              y='Cost', 
+              color='Cost element', 
+              title='Housing Development Cost Comparisons: Ksh',
+              labels={'Cost': 'Kenyan Shillings', 'Housing Type': 'Housing Type'},
+              color_discrete_sequence=px.colors.qualitative.D3)
 
-# Bar chart for cost in Kenyan Shillings
-df.set_index('Cost element').T.plot(kind='bar', stacked=True, ax=ax[0], legend=False)
-ax[0].set_title('Housing Development Cost Comparisons: Kenyan Shillings', fontsize=20,)
-ax[0].set_ylabel('Kenyan shillings (millions)', fontsize=16, fontweight='bold')
-ax[0].set_xlabel('')
-ax[0].set_xticklabels(df.columns[1:], rotation=0, fontsize=16,)
+fig1.update_layout(barmode='stack', 
+                    margin=dict(t=70), 
+                   xaxis_title=None,  # Remove x-axis title
+                   yaxis_title='Cost (Kenyan Shillings)',
+                   title_font=dict(size=10, family='Arial', color='black', weight='bold'),  # Reduce title font size and bolden
+                   font=dict(size=10, color='black'),  # Reduce overall font size
+                   xaxis=dict(tickfont=dict(size=8, weight='bold')),  # Reduce x-axis labels font size
+                   showlegend=False)  # Hide legend
 
-# Bar chart for percentage cost
+fig1.update_yaxes(title_font=dict(size=8, family='Arial Black', color='black', weight='bold'))  # Bolden the y-axis title
+fig1.update_xaxes(tickangle=0)  # Make x-axis labels horizontal
+
+# Calculate percentage cost per house type
 df_percentage = df.set_index('Cost element').div(df.set_index('Cost element').sum(axis=0), axis=1) * 100
-df_percentage.T.plot(kind='bar', stacked=True, ax=ax[1])
-ax[1].set_title('Housing Development Cost Comparisons: Percentage', fontsize=20)
-ax[1].set_ylabel('Percentage(%)', fontsize=16, fontweight='bold')
-ax[1].set_xlabel('')
-ax[1].set_xticklabels(df.columns[1:], rotation=0, fontsize=16)
-ax[1].legend(loc='upper left', bbox_to_anchor=(1.05, 1), frameon=False, fontsize=18)
+df_percentage = df_percentage.reset_index()
+df_percentage_melted = df_percentage.melt(id_vars='Cost element', var_name='Housing Type', value_name='Percentage')
 
-# Adjust layout
-plt.tight_layout()
+# Interactive stacked bar chart for percentage cost
+fig2 = px.bar(df_percentage_melted, 
+              x='Housing Type', 
+              y='Percentage', 
+              color='Cost element', 
+              title='Housing Development Cost Comparisons: Percentage',
+              labels={'Percentage': 'Percentage (%)', 'Housing Type': 'Housing Type'},
+              color_discrete_sequence=px.colors.qualitative.D3)
+
+fig2.update_layout(barmode='stack', 
+                    margin=dict(t=70), 
+                   xaxis_title=None,  # Remove x-axis title
+                   yaxis_title='Percentage (%)',
+                   title_font=dict(size=10, family='Arial', color='black', weight='bold'),  # Reduce title font size and bolden
+                   font=dict(size=10, color='black'),  # Reduce overall font size
+                   xaxis=dict(tickfont=dict(size=8)),  # Reduce x-axis labels font size
+                   legend=dict(
+                       font=dict(size=8),  # Reduce legend font size
+                       title=None,  # Remove the legend title
+                       x=0.99, y=1.01, 
+                       bgcolor='rgba(255,255,255,0)', 
+                       bordercolor='rgba(0,0,0,0)'))
+
+fig2.update_yaxes(title_font=dict(size=8, family='Arial Black', color='black', weight='bold'))  # Bolden the y-axis title
+fig2.update_xaxes(tickangle=0)  # Make x-axis labels horizontal
 
 # Displaying in Streamlit
 # st.image('./openaccess.png')
@@ -207,14 +239,39 @@ with st.expander("HCCB 2022 gragh comparison: CAHF vs Low-rise and High-rise pro
     # Create a container for the columns
     with st.container():
         # Create two columns with custom widths
-        col1, col2 = st.columns([1, 2], gap="medium")
+        col1, col2, col3 = st.columns([1, 1.1, 1.7], gap="medium")
 
         with col1:
-            st.markdown(f'<div class="fixed-table">{df_lbl.to_html(index=False)}</div>', unsafe_allow_html=True)
+            st.markdown("  ")
+            # st.dataframe(df)
+            st.dataframe(df,
+                column_config = {
+                "CAHF House 55m2": st.column_config.Column(
+                        "CAHF",
+                        help="*CAHF House 55m2*",
+                        width="small"),
+                "Low-rise blocks 44m2": st.column_config.Column(
+                        "Low-rise",
+                        help="*Low-rise blocks 44m2*",
+                        width="small"),
+                "High-rise blocks 44m2": st.column_config.Column(
+                        "High-rise ",
+                        help="*High-rise blocks 44m2*",
+                        width="small"),
+                "Cost Element": st.column_config.Column(
+                        width="small"),
+                },
+                height=380,
+                width=300,
+                hide_index=True,
+            )
+            # st.markdown(f'<div class="fixed-table">{df_lbl.to_html(index=False)}</div>', unsafe_allow_html=True)
 
         with col2:
-            st.pyplot(fig)
-
+            st.plotly_chart(fig1, use_container_width=True)
+          
+        with col3:
+            st.plotly_chart(fig2, use_container_width=True)
 
 
 
