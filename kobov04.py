@@ -10,6 +10,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
 import plotly.express as px
+import numpy as np
 
 im = Image.open("./openaccess.png")
 
@@ -486,7 +487,7 @@ data_summary1 = {
 }
 
 data_summary2 = {
-    "DESCRIPTION": ["Substructures", "Superstructure", "Roofing", "Staircases", "External Walls", "Windows External Doors", "Internal Walling", "Internal Doors", "Internal Finishes"],
+    "DESCRIPTION": ["Substructures", "Superstructure", "Roofing", "Staircases", "External Walls", "Windows and External Doors", "Internal Walling", "Internal Doors", "Internal Finishes"],
     "BQ Price": [14070020.00, 138745873.00, 15555062.00, 8942868.00, 34341620.00, 63586400.00, 15975500.00, 27792470.00, 121896264.00]
 }
 
@@ -567,3 +568,68 @@ with st.container():
 
         with st.expander("SUMMARY"):
             st.dataframe(df_summary)
+
+# Create a DataFrame for the table
+data = {
+    "BQ Item": ["Substructures", "Superstructure", "Roofing", "Staircases", "External Walls", 
+                "Windows and External Doors", "Internal Walling", "Internal Doors", "Internal Finishes"],
+    "BQ1 Cost": [14070020.00, 138745873.00, 15555062.00, 8942868.00, 34341620.00, 
+            63586400.00, 15975500.00, 27792470.00, 121896264.00],
+    "BQ2 Cost": [30608522.00, 81277234.00, 4639048.00, 0.00, 0.00, 
+            0.00, 0.00, 0.00, 0.00],
+    "Your Input": [0.0] * 9  # Initialize "Your Input" with zeros
+}
+
+df = pd.DataFrame(data)
+
+with st.expander("**Benchmark Your Cost Estimates**", expanded=True):
+    # Create a container for the columns
+    with st.container():
+        # Create two columns with custom widths
+        col1, col2 = st.columns([1.35, 2], gap="small")
+            # Editable DataFrame directly on the app
+
+        with col1:
+            st.write(":red[:red-background[*Input your cost per BQ item*]]")
+            df_editable = st.data_editor(df, num_rows="fixed", use_container_width=True, 
+                disabled=("BQ Item", "BQ1 Cost", "BQ2 Cost"), hide_index=True, 
+                column_config = {
+                "BQ Item": st.column_config.Column(
+                        width="small")},)
+
+            # Calculate the total for each column
+            total_input = df_editable["Your Input"].sum()
+            total_row = pd.DataFrame({
+                "BQ Item": ["Total"],
+                "BQ1 Cost": [df_editable["BQ1 Cost"].sum()],
+                "BQ2 Cost": [df_editable["BQ2 Cost"].sum()],
+                "Your Input": [total_input]
+            })
+
+            # Append the total row to the editable DataFrame
+            df_editable_with_total = pd.concat([df_editable, total_row], ignore_index=True)
+
+            # st.header("Percentage Table")
+            # Display the updated Table 1 with totals
+            # st.write(df_editable_with_total, hide_index=True)
+
+            # Calculate percentages based on the totals
+            # df_percent = df_editable_with_total.copy()
+            df_editable_with_total["BQ1 Cost (%)"] = ((df_editable_with_total["BQ1 Cost"] / df_editable_with_total.loc[df_editable_with_total['BQ Item'] == 'Total', 'BQ1 Cost'].values[0]) * 100).replace([np.inf, -np.inf, np.nan], 0).round(0).astype(int).astype(str) + '%'
+            df_editable_with_total["BQ2 Cost (%)"] = ((df_editable_with_total["BQ2 Cost"] / df_editable_with_total.loc[df_editable_with_total['BQ Item'] == 'Total', 'BQ2 Cost'].values[0]) * 100).replace([np.inf, -np.inf, np.nan], 0).round(0).astype(int).astype(str) + '%'
+            df_editable_with_total["Percentage"] = ((df_editable_with_total["Your Input"] / df_editable_with_total.loc[df_editable_with_total['BQ Item'] == 'Total', 'Your Input'].values[0]) * 100).replace([np.inf, -np.inf, np.nan], 0).round(0).astype(int).astype(str) + '%'
+
+            # Rename columns for clarity
+            # df_percent.rename(columns={"BQ1 Cost": "BQ1 Cost (%)", "BQ2 Cost": "BQ2 Cost (%)"}, inplace=True)
+
+            # Drop the 'Your Input' column for the percentage view
+            # df_percent = df_percent.drop(columns=["Your Input"])
+
+        with col2:
+            # Display the percentages as a separate view
+            st.write(" :green[:green-background[*Compare your cost distribution with the Benchmarks*]]")
+            df_percent = df_editable_with_total[["BQ Item","BQ1 Cost","BQ1 Cost (%)","BQ2 Cost", "BQ2 Cost (%)", "Your Input","Percentage"]]
+            st.dataframe(df_percent, 
+                column_config = {
+                "BQ Item": st.column_config.Column(width="small")},
+                hide_index=True, use_container_width=True)
