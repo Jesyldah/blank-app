@@ -1,10 +1,4 @@
 import streamlit as st
-
-# st.title("🎈 My new app")
-# st.write(
-#     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-# )
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -15,133 +9,6 @@ import numpy as np
 im = Image.open("./openaccess.png")
 
 st.set_page_config(layout="wide", page_title="Kobo Dashboard", page_icon = im)
-
-# Custom CSS to make the expander fill the page width and prevent overlapping
-st.markdown(
-    """
-    <style>
-    /* Make the main container full width */
-    .main {
-        max-width: 100%;
-        padding-top: 0;
-        padding-bottom: 0;
-        margin: 0;
-    }
-
-    .css-18e3th9 {
-        padding-top: 0rem !important;
-    }
-    
-    .css-1d391kg {
-        padding-top: 0rem;
-    }
-
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start; /* Align image to the left */
-        background: linear-gradient(to right, #018749, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2); /* Green and grey background shades */
-        padding: 10px 20px;
-        height: 60px; /* Adjust height to fit the content */
-        margin: 0;  /* Remove any margin */
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .header-image {
-        max-height: 60px; /* Smaller header image */
-        margin-left: 50px; /* Space between image and title */
-        width: 60px;
-    }
-    .streamlit-expander {
-        width: 100%;
-    }
-    .streamlit-expander > .streamlit-expanderHeader {
-        width: 100%;
-    }
-    .streamlit-expander > .streamlit-expanderContent {
-        width: 100%;
-    }
-    .stApp {
-        overflow-x: hidden;
-    }
-    .column1 {
-        flex: 1 !important;
-        max-width: 100%;
-    }
-    .column2 {
-        flex: 2 !important;
-        max-width: 100%;
-    }
-    @media (max-width: 1600px) {
-        .column1 {
-            flex: 1 !important;
-            max-width: 100%;
-        }
-        .column2 {
-            flex: 2 !important;
-            max-width: 100%;
-        }
-    }
-    @media (max-width: 1200px) {
-        .column1, .column2 {
-            flex: 100% !important;
-            max-width: 100%;
-        }
-    }
-    .fixed-table {
-        width: 100%;
-        height: 400px;  /* Set a fixed height */
-        overflow-y: auto;
-        overflow-x: hidden;
-        font-size: 10px;  /* Reduced font size */
-    }
-    .fixed-table table {
-        table-layout: fixed;
-        width: 100%;
-    }
-
-    .fixed-table th {
-        background-color: #018749;  /* Green background for headers */
-        color: white;
-        text-align: right;  /* Align text to the right */
-        padding: 5px;
-    }
-    .fixed-table th, .fixed-table td {
-        text-align: left;  /* Align text to the right */
-        padding: 5px;
-    }
-        /* Footer styling */
-    .myfooter {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #018749;
-        color: white;
-        text-align: center;
-        padding: 0px 0;
-        font-size: 8px;
-        z-index: 1000;
-        }
-
-    /* Spacing out the tabs to fill the whole width of the screen */
-    button[data-baseweb="tab"] { 
-       font-size: 24px;
-       margin: 0;
-       width: 100%;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-hide_default_format = """
-       <style>
-       #MainMenu, header, footer {visibility: hidden;}
-       </style>
-       """
-
-st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # Data preparation
 data_lbl = {
@@ -178,17 +45,17 @@ fig1 = px.bar(df_melted,
               color_discrete_sequence=px.colors.qualitative.D3)
 
 fig1.update_layout(barmode='stack', 
-                    margin=dict(t=50,l=0, r=0,), 
+                    # margin=dict(t=50,l=0, r=0,), s
                    xaxis_title=None,  # Remove x-axis title
-                   yaxis_title=dict(text ='Cost (Kenyan Shillings)', standoff=5),
+                   yaxis_title=dict(text ='Cost (Kenyan Shillings)', standoff=10),
                    title_x=0.1,
-                   title_font=dict(size=10, family='Arial', color='black', weight='bold'),  # Reduce title font size and bolden
+                   title_font=dict(size=12, family='Arial', color='black', weight='bold'),  # Reduce title font size and bolden
                    font=dict(size=10, color='black'),  # Reduce overall font size
-                   xaxis=dict(tickfont=dict(size=8, color='black')), 
-                   yaxis=dict(tickfont=dict(size=8, color='black')), # Reduce x-axis labels font size
+                   xaxis=dict(tickfont=dict(size=10, color='black')), 
+                   yaxis=dict(tickfont=dict(size=10, color='black')), # Reduce x-axis labels font size
                    showlegend=False)  # Hide legend
 
-fig1.update_yaxes(title_font=dict(size=8, family='Arial Black', color='black', weight='bold'),
+fig1.update_yaxes(title_font=dict(size=10, family='Arial Black', color='black', weight='bold'),
         # showline=True,
         #  linewidth=1,
         #  linecolor='green',
@@ -216,23 +83,23 @@ fig2 = px.bar(df_percentage_melted,
               color_discrete_sequence=px.colors.qualitative.D3)
 
 fig2.update_layout(barmode='stack', 
-                    margin=dict(t=50, l=0, r=0,), 
+                    # margin=dict(t=50, l=0, r=0,), 
                    xaxis_title=None,  # Remove x-axis title
                    # yaxis_title='Percentage (%)',
-                   yaxis_title=dict(text="Percentage (%)", standoff=5),  # Reduce standoff to bring the title closer to the axis
+                   yaxis_title=dict(text="Percentage (%)", standoff=10),  # Reduce standoff to bring the title closer to the axis
                    title_x=0.05,
-                   title_font=dict(size=10, family='Arial', color='black'),  # Reduce title font size and bolden
-                   font=dict(size=8, color='black'),  # Reduce overall font size
-                   xaxis=dict(tickfont=dict(size=8, color='black')), 
-                   yaxis=dict(tickfont=dict(size=8, color='black')), # Reduce x-axis labels font size
+                   title_font=dict(size=12, family='Arial', color='black'),  # Reduce title font size and bolden
+                   font=dict(size=10, color='black'),  # Reduce overall font size
+                   xaxis=dict(tickfont=dict(size=10, color='black')), 
+                   yaxis=dict(tickfont=dict(size=10, color='black')), # Reduce x-axis labels font size
                    legend=dict(
-                       font=dict(size=8),  # Reduce legend font size
+                       font=dict(size=10),  # Reduce legend font size
                        title=None,  # Remove the legend title
                        x=1.01, y=1.01, 
                        bgcolor='rgba(255,255,255,0)', 
                        bordercolor='rgba(0,0,0,0)'))
 
-fig2.update_yaxes(title_font=dict(size=8, family='Arial Black', color='black', weight='bold'),
+fig2.update_yaxes(title_font=dict(size=10, family='Arial Black', color='black', weight='bold'),
         # showline=True,
         #  linewidth=1,
         #  linecolor='green',
@@ -275,7 +142,7 @@ tab1, tab2, tab3 = st.tabs([" 🏗️**Total Project Cost Breakdown**",
 
 with tab1:
 
-    with st.expander("HCCB 2022 gragh comparison: CAHF vs Low-rise and High-rise projects", expanded=True):
+    # with st.expander("HCCB 2022 gragh comparison: CAHF vs Low-rise and High-rise projects", expanded=True):
         # Create a container for the columns
 
         st.markdown("""
@@ -287,33 +154,33 @@ with tab1:
 
         with st.container():
             # Create two columns with custom widths
-            col1, col2, col3 = st.columns([1.1, 1, 1.6], gap="small")
+            col2, col3 = st.columns([1, 1.6], gap="small")
 
-            with col1:
-                st.markdown("  ")
-                # st.dataframe(df)
-                st.dataframe(df,
-                    column_config = {
-                    "CAHF House 55m2": st.column_config.Column(
-                            "CAHF 🏡",
-                            help="*CAHF House 55m2* :house_with_garden:",
-                            width="small"),
-                    "Low-rise blocks 44m2": st.column_config.Column(
-                            "Low-rise🏗️",
-                            help="*Low-rise blocks 44m2* :building_construction:",
-                            width="small"),
-                    "High-rise blocks 44m2": st.column_config.Column(
-                            "High-rise🏗️",
-                            help="*High-rise blocks 44m2* :building_construction:",
-                            width="small"),
-                    "Cost element": st.column_config.Column(
-                            "Cost 💰",
-                            help="*Cost element* :moneybag:",
-                            width="small"),
-                    },
-                    height=380,
-                    hide_index=True,
-                )
+            # with col1:
+            #     st.markdown("  ")
+            #     # st.dataframe(df)
+            #     st.dataframe(df,
+            #         column_config = {
+            #         "CAHF House 55m2": st.column_config.Column(
+            #                 "CAHF 🏡",
+            #                 help="*CAHF House 55m2* :house_with_garden:",
+            #                 width="small"),
+            #         "Low-rise blocks 44m2": st.column_config.Column(
+            #                 "Low-rise🏗️",
+            #                 help="*Low-rise blocks 44m2* :building_construction:",
+            #                 width="small"),
+            #         "High-rise blocks 44m2": st.column_config.Column(
+            #                 "High-rise🏗️",
+            #                 help="*High-rise blocks 44m2* :building_construction:",
+            #                 width="small"),
+            #         "Cost element": st.column_config.Column(
+            #                 "Cost 💰",
+            #                 help="*Cost element* :moneybag:",
+            #                 width="small"),
+            #         },
+            #         height=380,
+            #         hide_index=True,
+            #     )
                 # st.markdown(f'<div class="fixed-table">{df_lbl.to_html(index=False)}</div>', unsafe_allow_html=True)
 
             with col2:
@@ -321,6 +188,31 @@ with tab1:
               
             with col3:
                 st.plotly_chart(fig2, use_container_width=True)
+
+            with st.expander("HCCB 2022 gragh comparison data: CAHF vs Low-rise and High-rise projects"):
+                st.markdown("  ")
+                # st.dataframe(df)
+                st.dataframe(df,
+                    column_config = {
+                    "CAHF House 55m2": st.column_config.Column(
+                            "CAHF House 55m2 🏡",
+                            help="*CAHF House 55m2* :house_with_garden:"
+                            ),
+                    "Low-rise blocks 44m2": st.column_config.Column(
+                            "Low-rise blocks 44m2 🏗️",
+                            help="*Low-rise blocks 44m2* :building_construction:"
+                            ),
+                    "High-rise blocks 44m2": st.column_config.Column(
+                            "High-rise blocks 44m2 🏗️",
+                            help="*High-rise blocks 44m2* :building_construction:"
+                            ),
+                    "Cost element": st.column_config.Column(
+                            "Cost element 💰",
+                            help="*Cost element* :moneybag:"
+                            ),
+                    },
+                    hide_index=True,use_container_width=True
+                )
 
 
 # Load the existing data for each section
@@ -372,9 +264,9 @@ walling_df = pd.DataFrame(walling_data)
 summary_df = pd.DataFrame(summary_data)
 
 # Define indices for each section
-substructures_index = list("ABCDEFGHIJKL") + [""]  # 12 rows
-superstructures_index = list("MNOP") + [""]        # 4 rows
-roofing_index = list("QRST")                       # 4 rows
+substructures_index = list("ABCDEFGHIJK") + [""]  # 12 rows
+superstructures_index = list("MNO") + [""]        # 4 rows
+roofing_index = list("QRS") + [""]                       # 4 rows
 walling_index = list("UV") + [""]                  # 3 rows
 summary_index = list("WXYZ") + [""]                # 5 rows
 
@@ -522,7 +414,7 @@ fig1.update_traces(hole=0)
 fig1.update_layout(
     width=500,  # Set width to 500 pixels
     height=400,  # Set height to 500 pixels
-    margin=dict(l=20, r=20, t=20, b=20),
+    margin=dict(l=20, r=20, t=50, b=20),
 )
 
 fig2 = px.pie(df_summary2, names='DESCRIPTION', values='BQ Price', title='BQ2 Construction Cost Distribution')
@@ -530,7 +422,7 @@ fig2.update_traces(hole=0)
 fig2.update_layout(
     width=500,  # Set width to 500 pixels
     height=400, # Set height to 500 pixels
-    margin=dict(l=20, r=20, t=20, b=20),
+    margin=dict(l=20, r=20, t=50, b=20),
 )
 
 with tab2:
@@ -540,7 +432,7 @@ with tab2:
         with col1:
             st.markdown(html_BQ1, unsafe_allow_html=True)
             # Create collapsible sections for each part
-            st.plotly_chart(fig1)
+            st.plotly_chart(fig1, use_container_width=True)
 
             with st.expander("SUBSTRUCTURES"):
                 st.dataframe(substructures_df)
@@ -560,7 +452,7 @@ with tab2:
         with col2:
             st.markdown(html_BQ2, unsafe_allow_html=True)
 
-            st.plotly_chart(fig2)  
+            st.plotly_chart(fig2, use_container_width=True)  
                   
             with st.expander("SUBSTRUCTURES"):
                 st.dataframe(df_substructures)
@@ -674,13 +566,185 @@ with tab3:
 
 # Footer
 st.markdown("""
-<div class="myfooter">
-    <p>
-        Contact us: info@example.com | All rights reserved © 2024
-        <br>
-        <a href="https://www.facebook.com" target="_blank" style="color:white">Facebook</a>
-        | <a href="https://www.twitter.com" target="_blank" style="color:white">Twitter</a>
-        | <a href="https://www.linkedin.com" target="_blank" style="color:white">LinkedIn</a>
-    </p>
-</div>
+  <div class="footer">
+        <hr>
+        <ul class="social-icons">
+            <li><a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://yourwebsite.com"><i class="fas fa-globe"></i></a></li>
+            <li><a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="mailto:someone@example.com"><i class="fas fa-envelope"></i></a></li>
+        </ul>
+  </div>
 """, unsafe_allow_html=True)
+
+# Custom CSS to make the expander fill the page width and prevent overlapping
+st.markdown(
+    """
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+    /* Make the main container full width */
+    .main {
+        max-width: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin: 0;
+    }
+
+    .css-18e3th9 {
+        padding-top: 0rem !important;
+    }
+    
+    .css-1d391kg {
+        padding-top: 0rem;
+    }
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Align image to the left */
+        background: linear-gradient(to right, #018749, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2, #E5E4E2); /* Green and grey background shades */
+        padding: 10px 20px;
+        height: 60px; /* Adjust height to fit the content */
+        margin: 0;  /* Remove any margin */
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .header-image {
+        max-height: 60px; /* Smaller header image */
+        margin-left: 50px; /* Space between image and title */
+        width: 60px;
+    }
+    .streamlit-expander {
+        width: 100%;
+    }
+    .streamlit-expander > .streamlit-expanderHeader {
+        width: 100%;
+    }
+    .streamlit-expander > .streamlit-expanderContent {
+        width: 100%;
+    }
+    .stApp {
+        overflow-x: hidden;
+    }
+    .column1 {
+        flex: 1 !important;
+        max-width: 100%;
+    }
+    .column2 {
+        flex: 2 !important;
+        max-width: 100%;
+    }
+    @media (max-width: 1600px) {
+        .column1 {
+            flex: 1 !important;
+            max-width: 100%;
+        }
+        .column2 {
+            flex: 2 !important;
+            max-width: 100%;
+        }
+    }
+    @media (max-width: 1200px) {
+        .column1, .column2 {
+            flex: 100% !important;
+            max-width: 100%;
+        }
+    }
+    .fixed-table {
+        width: 100%;
+        height: 400px;  /* Set a fixed height */
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 10px;  /* Reduced font size */
+    }
+    .fixed-table table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    .fixed-table th {
+        background-color: #018749;  /* Green background for headers */
+        color: white;
+        text-align: right;  /* Align text to the right */
+        padding: 5px;
+    }
+    .fixed-table th, .fixed-table td {
+        text-align: left;  /* Align text to the right */
+        padding: 5px;
+    }
+        /* Footer styling */
+    .myfooter {
+        # position: fixed;
+        margin-top: 30px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #018749;
+        color: white;
+        text-align: center;
+        padding: 0px 0;
+        font-size: 8px;
+        z-index: 1000;
+    }
+
+    .footer {
+        # background-color: white;
+        padding: 20px;
+        text-align: left;
+        color: red;
+        margin-top: 50px;
+        width: 100%;
+        z-index: 1000;
+        left: 0;
+        bottom: 0;
+        padding: 0px 0px;
+    }
+
+    .footer .social-icons {
+        display: flex;
+        justify-content: right;
+        list-style: none;
+        padding: 20px;
+    }
+    .footer .social-icons li {
+        margin: 0 10px;
+    }
+    .footer .social-icons li a {
+        text-decoration: none;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: #f9f9f9;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        color: #666;
+        font-size: 15px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+    .footer .social-icons li a:hover {
+        background-color: #ddd;
+        color: #007bff;
+    }
+
+    /* Spacing out the tabs to fill the whole width of the screen */
+    button[data-baseweb="tab"] { 
+       font-size: 24px;
+       margin: 0;
+       width: 100%;
+    }
+    
+    #MainMenu, header, footer {visibility: hidden;}   
+    
+    /* Change the background color of the main content area */
+    .stApp {
+        background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyM5_ZoWp8LbH-HUkkhNv_vJ8iIsceqrnCXg&s");
+        background-size: cover
+    } 
+    </style>
+    """,
+    unsafe_allow_html=True
+)
