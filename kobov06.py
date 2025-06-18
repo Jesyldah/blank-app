@@ -129,12 +129,14 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-st.subheader(":green[Housing Development Cost Comparison]")
+st.subheader(":green[Housing Development Cost Benchmarking - Kenya]")
 
 # Add Lorem Ipsum text
 st.markdown("""
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Sed congue, metus non scelerisque dignissim, purus nisi pulvinar metus, eget ultricies nisl erat ut mi. Fusce elementum, nulla vel feugiat lacinia, elit purus fermentum lacus, et imperdiet urna metus et ligula. Ut tincidunt, erat eu tincidunt gravida, felis libero tempus lorem, ac sodales mi justo a turpis. Curabitur suscipit, sem quis elementum faucibus, erat orci posuere metus, et ultricies magna risus a purus. Nullam vestibulum ligula et sapien consequat, quis interdum quam cursus.
-""")
+Housing Development Cost Benchmarking (HDCB) as conducted by the Centre for Affordable Housing Finance in Africa (CAHF) is an analytic tool which unpacks the typical, total 
+development cost of various types of affordable housing products in detail. This analysis can improve stakeholders’ awareness and understanding of real development cost and 
+the critical cost drivers in the affordable housing development process. This understanding enables them to explore strategies and actions to mitigate (or leverage) the effects 
+of these in favour of enhancing affordability.""")
 
 tab1, tab2, tab3 = st.tabs([" 🏗️**Total Project Cost Breakdown**", 
     "🚧 **Construction Cost Distribution**", 
@@ -146,10 +148,27 @@ with tab1:
         # Create a container for the columns
 
         st.markdown("""
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            For the 2022 benchmarking exercise updated cost and other relevant information was collected before, during and immediately after the September 2022 field visit to Nairobi by CAHF 
+            staff. This data was collated, processed, analysed, and are presented here under the following main categories as outlined in more detail in 1.1 above:
+            - Land - Land acquisition and associated statutory and professional transaction costs and fees.
+            - Infrastructure – external bulk/trunk and internal reticulation services.
+            - Compliances and approvals – statutory and associated professional charges, fees, and costs.
+            - Housing construction – top structures and associated site works and services and professional and project management fees.
+            - Other development costs – land holding costs, Initial promotion and selling/letting costs, construction finance costs, 
+            - Estimated selling prices – developer recovery of overall development facilitation and management costs, margins and taxes, and cost of sales.
+            The following typologies were benchmarked:
+            1. NAIROBI: 55m2 Generic house - 46m2 two-bedroom, one bathroom house with 9m2 covered veranda, a total floor area of 55m2
+            , in a hypothetical 20-unit development on typical 
+            1/8th acre (approximately 506m2
+            ) individual plots; undertaken by a small-scale local contractor cum developer.
+            2. NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) 40m2
+            , and Net Sales Area of 44m2 per unit in two five-storey walk-up blocks, on 1.5acre 
+            (6 070m2
+            ) plot, undertaken by a medium-sized commercial developer; and
+            3. NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) of 40m2
+            , and Net Sales Area of 44m2 per unit in two ten-storey blocks with lifts, on 1.2acre 
+            (4 856m2
+            ) plot, undertaken by a medium-sized commercial developer
             """)
 
         with st.container():
@@ -505,10 +524,15 @@ with tab3:
         with st.container():
 
             st.markdown("""
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
+                In the HDCB analyses costs and selling prices are estimated by building up totals from detailed inputs into individual items, from land acquisition, infrastructure installations, compliances 
+                and approvals, construction through to developer fees, mark-ups, and taxes, the so-called “bottom-up” approach described earlier in the introduction. The process of validating the 
+                results was done by comparison against typical values in the marketplace obtained through reports by industry specialists and project costing and pricing figures provided by a0 small 
+                sample of developers. The HDCB results are within the ranges observed and appear to be realistic. 
+                Taking due cognizance of some shortcomings in the data collected, briefly summarized below, it is considered reasonable therefore, to conclude that the Housing Development Cost 
+                Benchmarks established through this study could confidently be used by developers and other interested parties to measure their own efforts against. Additionally, the Benchmark 
+                should be viewed as a starting point for further exchanges with the opportunity to build on it further, bearing in mind also that the analysis is a snapshot providing a limited picture at 
+                a certain point in time while the real world of development is a dynamic melting pot of internal and external drivers. Also, it has produced a set of single benchmarks where a range 
+                may be more appropriate.
             """, unsafe_allow_html=True)
 
             # Create two columns with custom widths
