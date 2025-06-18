@@ -1,4 +1,4 @@
-# 🎈 Blank app template
+# 🎈 Kobo Dashboard
 
 Housing Development Cost Comparison
 
