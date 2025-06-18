@@ -150,22 +150,26 @@ with tab1:
 
         st.markdown("""
             <p style="font-size:12px"> For the 2022 benchmarking exercise updated cost and other relevant information was collected before, during and immediately after the September 2022 field visit to Nairobi by CAHF 
-            staff. This data was collated, processed, analysed, and are presented here under the following main categories as outlined in more detail in 1.1 above:
-            - Land - Land acquisition and associated statutory and professional transaction costs and fees.
-            - Infrastructure – external bulk/trunk and internal reticulation services.
-            - Compliances and approvals – statutory and associated professional charges, fees, and costs.
-            - Housing construction – top structures and associated site works and services and professional and project management fees.
-            - Other development costs – land holding costs, Initial promotion and selling/letting costs, construction finance costs, 
-            - Estimated selling prices – developer recovery of overall development facilitation and management costs, margins and taxes, and cost of sales.
-            The following typologies were benchmarked:
-            1. NAIROBI: 55m2 Generic house - 46m2 two-bedroom, one bathroom house with 9m2 covered veranda, a total floor area of 55m2
-            , in a hypothetical 20-unit development on typical 1/8th acre (approximately 506m2) individual plots; undertaken by a small-scale local contractor cum developer.
-            2. NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) 40m2
-            , and Net Sales Area of 44m2 per unit in two five-storey walk-up blocks, on 1.5acre 
+            staff. This data was collated, processed, analysed, and are presented here under the following main categories as outlined in more detail in 1.1 above:</p>
+            <ul style="font-size:12px">
+                <li> Land - Land acquisition and associated statutory and professional transaction costs and fees.</li>
+                <li> Infrastructure – external bulk/trunk and internal reticulation services.</li>
+                <li> Compliances and approvals – statutory and associated professional charges, fees, and costs.</li>
+                <li> Housing construction – top structures and associated site works and services and professional and project management fees.</li>
+                <li> Other development costs – land holding costs, Initial promotion and selling/letting costs, construction finance costs. </li> 
+                <li> Estimated selling prices – developer recovery of overall development facilitation and management costs, margins and taxes, and cost of sales.</li>
+            </ul>
+            <p style="font-size:12px"> The following typologies were benchmarked: </p>
+            <ol style="font-size:12px">
+                <li> NAIROBI: 55m2 Generic house - 46m2 two-bedroom, one bathroom house with 9m2 covered veranda, a total floor area of 55m2
+            , in a hypothetical 20-unit development on typical 1/8th acre (approximately 506m2) individual plots; undertaken by a small-scale local contractor cum developer.</li>
+                <li> NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) 40m2
+            , and Net Sales Area of 44m2 per unit in two five-storey walk-up blocks, on 1.5acre </li>
             (6 070m2) plot, undertaken by a medium-sized commercial developer; and
-            3. NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) of 40m2
+                <li> NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) of 40m2
             , and Net Sales Area of 44m2 per unit in two ten-storey blocks with lifts, on 1.2acre 
-            (4 856m2) plot, undertaken by a medium-sized commercial developer. </p>
+            (4 856m2) plot, undertaken by a medium-sized commercial developer.</li>
+            </ol>
             """, unsafe_allow_html=True)
 
         with st.container():
