@@ -133,10 +133,11 @@ st.subheader(":green[Housing Development Cost Benchmarking - Kenya]")
 
 # Add Lorem Ipsum text
 st.markdown("""
-Housing Development Cost Benchmarking (HDCB) as conducted by the Centre for Affordable Housing Finance in Africa (CAHF) is an analytic tool which unpacks the typical, total 
-development cost of various types of affordable housing products in detail. This analysis can improve stakeholders’ awareness and understanding of real development cost and 
-the critical cost drivers in the affordable housing development process. This understanding enables them to explore strategies and actions to mitigate (or leverage) the effects 
-of these in favour of enhancing affordability.""")
+    Housing Development Cost Benchmarking (HDCB) as conducted by the Centre for Affordable Housing Finance in Africa (CAHF) is an analytic tool which unpacks the typical, total 
+    development cost of various types of affordable housing products in detail. This analysis can improve stakeholders’ awareness and understanding of real development cost and 
+    the critical cost drivers in the affordable housing development process. This understanding enables them to explore strategies and actions to mitigate (or leverage) the effects 
+    of these in favour of enhancing affordability.
+            """)
 
 tab1, tab2, tab3 = st.tabs([" 🏗️**Total Project Cost Breakdown**", 
     "🚧 **Construction Cost Distribution**", 
