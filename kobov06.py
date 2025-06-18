@@ -166,7 +166,7 @@ with tab1:
             3. NAIROBI: 240 two-bedroom - one-bathroom apartments with Gross Lettable Area (GLA) of 40m2
             , and Net Sales Area of 44m2 per unit in two ten-storey blocks with lifts, on 1.2acre 
             (4 856m2) plot, undertaken by a medium-sized commercial developer. </p>
-            """)
+            """, unsafe_allow_html=True)
 
         with st.container():
             # Create two columns with custom widths
@@ -529,7 +529,7 @@ with tab3:
                 <p style="font-size:12px">Taking due cognizance of some shortcomings in the data collected, briefly summarized below, it is considered reasonable therefore, to conclude that the Housing Development Cost 
                 Benchmarks established through this study could confidently be used by developers and other interested parties to measure their own efforts against. Additionally, the Benchmark 
                 should be viewed as a starting point for further exchanges with the opportunity to build on it further, bearing in mind also that the analysis is a snapshot providing a limited picture at 
-                a certain point in time while the real world of development is a dynamic melting pot of internal and external drivers. Also, it has produced a set of single benchmarks where a range 
+                a certain point in time while the real world of development is a dynamic melting pot of internal and external drivers. 
                 may be more appropriate.</p>
             """, unsafe_allow_html=True)
 
